@@ -1,8 +1,10 @@
+package com.andersenlab;
+
 import java.io.*;
 import java.math.BigInteger;
 
 public class Multiply {
-    public void run() {
+    public void run(BufferedWriter writer) {
         long time = System.currentTimeMillis();
         BigInteger mul = BigInteger.ONE;
         String result = null;
@@ -15,7 +17,7 @@ public class Multiply {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("out.txt"))) {
+        try {
             if (result != null) {
                 writer.write(result + "\n" + (double) (System.currentTimeMillis() - time) / 1000);
             }
