@@ -1,6 +1,5 @@
 package com.andersenlab;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -32,7 +31,9 @@ public class DataBuffer {
 
     public void add(String[] numbers) {
         synchronized (this) {
-            data.addAll(Arrays.asList(numbers));
+            for(String element : numbers) {
+                data.offer(element);
+            }
         }
     }
 
