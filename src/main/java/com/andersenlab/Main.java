@@ -38,10 +38,10 @@ public class Main {
         thread1.join();
 
         writer.write("\n" + (double) (System.currentTimeMillis() - time) / 1000);
-        writer.newLine();
+        /*writer.newLine();
 
         Multiply multiply = new Multiply();
-        multiply.run(writer);
+        multiply.run(writer);*/
 
         try {
             reader.close();

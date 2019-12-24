@@ -5,7 +5,7 @@ import java.util.Queue;
 
 public class DataBuffer {
     private final Queue<String> data = new LinkedList<>();
-    private volatile boolean insertionFinished = false;
+    private boolean insertionFinished = false;
     private String result = null;
 
     public String getResult() {

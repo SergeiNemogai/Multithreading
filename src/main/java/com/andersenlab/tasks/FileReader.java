@@ -1,9 +1,9 @@
 package com.andersenlab.tasks;
 
 import com.andersenlab.DataBuffer;
+import lombok.SneakyThrows;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 
 public class FileReader implements Runnable {
     private final BufferedReader reader;
@@ -14,16 +14,13 @@ public class FileReader implements Runnable {
         this.dataBuffer = dataBuffer;
     }
 
+    @SneakyThrows
     @Override
     public void run() {
         String line;
-        try {
-            while ((line = reader.readLine()) != null) {
-                dataBuffer.add(line.split("\t"));
-            }
-            dataBuffer.setInsertionFinished();
-        } catch (IOException e) {
-            e.printStackTrace();
+        while ((line = reader.readLine()) != null) {
+            dataBuffer.add(line.split("\t"));
         }
+        dataBuffer.setInsertionFinished();
     }
 }

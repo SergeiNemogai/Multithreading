@@ -1,9 +1,9 @@
 package com.andersenlab.tasks;
 
 import com.andersenlab.DataBuffer;
+import lombok.SneakyThrows;
 
 import java.io.BufferedWriter;
-import java.io.IOException;
 
 public class FileWriter implements Runnable {
     private final BufferedWriter writer;
@@ -14,15 +14,12 @@ public class FileWriter implements Runnable {
         this.dataBuffer = dataBuffer;
     }
 
+    @SneakyThrows
     @Override
     public void run() {
         String result = dataBuffer.getResult();
-        try {
-            if (result != null) {
-                writer.write(result);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (result != null) {
+            writer.write(result);
         }
     }
 }
